@@ -12,3 +12,17 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+const express = require('express');
+const server = express();
+// need to import router points when those are made
+
+server.use(express.json());
+
+server.use('/', (req, res) => {
+    res.status(200).send("hello from index.js server");
+});
+
+server.listen(3000, () => {
+    console.log('The server is running');
+});
+
