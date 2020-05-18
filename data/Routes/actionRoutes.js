@@ -37,7 +37,7 @@ router.get("/:id", (req, res) => {
     })
 });
 
-router.post("/", (req, res) => {
+router.post("/:id", (req, res) => {
     const body = req.body;
     db.insert(body)
     .then(obj => {
