@@ -33,5 +33,22 @@ router.get("/:id", (req, res) => {
 });
 
 
+router.post("/", (req, res) => {
+    const body = req.body;
+    db.insert(body)
+    .then(obj => {
+        console.log("New Project", obj);
+        res.status(201).json(obj);
+    })
+    .catch(error => {
+        console.log(error)
+        if (!error.name || !error.description) {
+            res.status(400).json({ errorMessage: 'Please provide a name and description for the post.'})
+        } else {
+            res.status(500).json({ error: 'There was an error saving the post.'});
+        }
+    })
+})
+
 module.exports = router;
 
