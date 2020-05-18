@@ -16,9 +16,11 @@ const express = require('express');
 const server = express();
 // need to import router points when those are made
 const projectRouter = require('./data/Routes/projectRoutes.js');
+const actionRouter = require('./data/Routes/actionRoutes.js');
 
 server.use(express.json());
-server.use('/api/projects', projectRouter)
+server.use('/api/projects', projectRouter);
+server.use('/api/actions', actionRouter);
 
 server.use('/', (req, res) => {
     res.status(200).send("hello from index.js server");
